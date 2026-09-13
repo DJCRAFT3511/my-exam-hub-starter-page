@@ -1,0 +1,217 @@
+/* MyExamHub — temporary showcase page ("the paper")
+   Concept: the page reads as a single exam paper — a cover sheet, four
+   numbered questions, and an end-of-paper note. Answered questions (Q1–Q3)
+   get a hand-marked tick in --color-accent-strong; the "coming soon"
+   question (Q4) gets empty dashed checkboxes instead, so the marking
+   itself communicates what's live versus what's still ahead.
+   Reuses design-system tokens from style.css — no new colors introduced. */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+body.showcase-page {
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, color-mix(in srgb, var(--color-primary) 7%, transparent), transparent),
+    var(--color-bg);
+}
+
+/* ---- header: slim ID strip, no primary nav ---- */
+.showcase-page .site-header .primary-nav ul { display: none; }
+.showcase-page .site-header .nav-toggle { display: none; }
+
+/* ---- shared "paper" surface ---- */
+.xh-paper {
+  max-width: 760px;
+  margin-inline: auto;
+  background: var(--color-surface);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2.05rem,
+    color-mix(in srgb, var(--color-text) 6%, transparent) 2.05rem,
+    color-mix(in srgb, var(--color-text) 6%, transparent) calc(2.05rem + 1px)
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  transform: rotate(-0.35deg);
+  position: relative;
+  padding: var(--space-5) var(--space-4) var(--space-5) calc(var(--space-4) + 2.75rem);
+}
+.xh-paper::before {
+  /* the red-margin rule down the left of the sheet */
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2.75rem;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-accent-strong) 55%, transparent);
+}
+@media (max-width: 640px) {
+  .xh-paper { padding: var(--space-4) var(--space-3) var(--space-4) calc(var(--space-3) + 2rem); }
+  .xh-paper::before { left: 2rem; }
+}
+
+.xh-wrap { padding-block: var(--space-6) var(--space-5); }
+.xh-wrap .container { padding-inline: var(--space-3); }
+
+.xh-mono {
+  font-family: 'Space Mono', var(--font-body);
+}
+
+/* ---- cover sheet ---- */
+.xh-cover-label {
+  font-family: 'Space Mono', var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.xh-cover h1 { margin-bottom: var(--space-3); max-width: 16ch; }
+.xh-cover-lede { font-size: 1.08rem; max-width: 48ch; margin-bottom: var(--space-4); }
+
+.xh-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  row-gap: 0.5rem;
+  font-family: 'Space Mono', var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-text-soft);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-3);
+  margin-top: var(--space-4);
+}
+.xh-meta dt { color: var(--color-text); font-weight: 700; }
+.xh-meta dd { margin: 0; }
+
+/* ---- stamp: signature element ---- */
+.xh-stamp {
+  width: 132px;
+  height: 132px;
+  margin: var(--space-4) 0 0 auto;
+  color: var(--color-accent-strong);
+  transform: rotate(-9deg);
+  opacity: 0;
+  animation: xh-stamp-in 640ms var(--ease-out) 240ms forwards;
+}
+.xh-stamp svg { width: 100%; height: 100%; overflow: visible; }
+.xh-stamp text {
+  font-family: 'Space Mono', var(--font-body);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  fill: currentColor;
+}
+.xh-stamp circle { fill: none; stroke: currentColor; }
+.xh-stamp .xh-stamp-check { stroke: currentColor; fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes xh-stamp-in {
+  from { opacity: 0; transform: rotate(18deg) scale(0.6); }
+  to { opacity: 1; transform: rotate(-9deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xh-stamp { animation: none; opacity: 1; }
+}
+
+/* ---- questions ---- */
+.xh-q { padding-block: var(--space-5); border-top: 1px dashed var(--color-border); }
+.xh-q:first-of-type { border-top: none; }
+
+.xh-q-head { display: flex; align-items: baseline; gap: var(--space-2); margin-bottom: var(--space-3); }
+.xh-q-num {
+  font-family: 'Space Mono', var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-ink-on-accent);
+  background: var(--color-accent);
+  border-radius: var(--radius-sm);
+  padding: 0.15rem 0.5rem;
+  transform: rotate(-3deg);
+  flex-shrink: 0;
+}
+.xh-q-head h2 { margin: 0; }
+
+.xh-q-tick {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  color: var(--color-accent-strong);
+  align-self: center;
+}
+.xh-q-tick svg { width: 100%; height: 100%; }
+.xh-q-tick path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  transition: stroke-dashoffset 520ms var(--ease-out);
+}
+.xh-q.is-marked .xh-q-tick path { stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .xh-q-tick path { transition: none; stroke-dashoffset: 0; }
+}
+
+.xh-q-body p { max-width: 60ch; }
+.xh-q-body p + p { margin-top: var(--space-2); }
+
+/* Q2: lettered workings list */
+.xh-workings { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-3); }
+.xh-workings li { display: flex; gap: var(--space-2); }
+.xh-workings .xh-letter {
+  font-family: 'Space Mono', var(--font-body);
+  font-weight: 700;
+  color: var(--color-accent-strong);
+  flex-shrink: 0;
+}
+.xh-workings strong { color: var(--color-text); }
+.xh-workings p { margin: 0; display: inline; color: var(--color-text-soft); }
+
+/* Q3: helps-with trio */
+.xh-helps { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
+@media (min-width: 640px) { .xh-helps { grid-template-columns: repeat(3, 1fr); } }
+.xh-helps-item h3 { font-size: 1.02rem; margin-bottom: 0.3rem; }
+.xh-helps-item p { font-size: 0.94rem; }
+
+/* Q4: coming soon, unchecked */
+.xh-soon { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-3); }
+.xh-soon li { display: flex; gap: var(--space-2); align-items: flex-start; }
+.xh-soon-box {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  border: 1.5px dashed color-mix(in srgb, var(--color-text-soft) 70%, transparent);
+  border-radius: 4px;
+}
+.xh-soon strong { color: var(--color-text); }
+.xh-soon p { margin: 0; display: inline; color: var(--color-text-soft); }
+
+/* ---- end of paper ---- */
+.xh-end {
+  text-align: center;
+  padding-top: var(--space-5);
+  border-top: 1px dashed var(--color-border);
+}
+.xh-end-mark {
+  font-family: 'Space Mono', var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.xh-end h2 { margin-bottom: var(--space-2); }
+.xh-end p { margin-inline: auto; margin-bottom: var(--space-4); }
+
+/* ---- focus ---- */
+.showcase-page a:focus-visible,
+.showcase-page button:focus-visible {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 2px;
+}

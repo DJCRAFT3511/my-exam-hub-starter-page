@@ -1,0 +1,17 @@
+# Agent/skill tooling — installed via npx, not authored content.
+# Reinstall on a new machine with the same commands used to set these up:
+#   npx skills@latest add emilkowalski/skills
+#   npx impeccable install
+.agents/
+.codex/
+skills-lock.json
+.claude/settings.local.json
+.claude/skills/*
+!.claude/skills/new-page/
+
+# graphify — generated knowledge-graph output, not authored content
+graphify-out/
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
