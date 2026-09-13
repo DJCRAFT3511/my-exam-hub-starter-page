@@ -130,7 +130,7 @@
 
     summary.addEventListener('click', function (e) {
       e.preventDefault();
-      if (details.open) {
+      if (details.classList.contains('is-open')) {
         collapse();
       } else {
         expand();
@@ -140,10 +140,10 @@
     function settle(onEnd) {
       var done = false;
       function handler(e) {
-        if (e.propertyName && e.propertyName !== 'height') { return; }
+        if (e.propertyName && e.propertyName !== 'grid-template-rows') { return; }
         finish();
       }
-      var timer = setTimeout(finish, 340);
+      var timer = setTimeout(finish, 320);
       answer.addEventListener('transitionend', handler);
       function finish() {
         if (done) { return; }
@@ -156,25 +156,14 @@
 
     function expand() {
       details.open = true;
-      var target = answer.scrollHeight;
-      answer.style.height = '0px';
-      void answer.offsetHeight; /* force reflow so display:none -> 0px is committed before animating */
       requestAnimationFrame(function () {
-        answer.style.height = target + 'px';
+        details.classList.add('is-open');
       });
-      settle(function () { answer.style.height = ''; });
     }
 
     function collapse() {
-      answer.style.height = answer.scrollHeight + 'px';
-      void answer.offsetHeight;
-      requestAnimationFrame(function () {
-        answer.style.height = '0px';
-      });
-      settle(function () {
-        details.open = false;
-        answer.style.height = '';
-      });
+      details.classList.remove('is-open');
+      settle(function () { details.open = false; });
     }
   });
 

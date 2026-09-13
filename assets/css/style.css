@@ -9,8 +9,6 @@
    Direction: growth-journey narrative, clean editorial execution
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;600;700;900&family=Source+Sans+3:wght@400;500;600;700&display=swap');
-
 :root {
   --color-primary: #7A2438;
   --color-accent: #4FD1B5;
@@ -390,6 +388,21 @@ p { color: var(--color-text-soft); max-width: 62ch; }
   .btn.header-cta { display: none; }
 }
 
+/* Home page: never hide the header CTAs, even on narrow phones — this
+   page has no hamburger fallback, so "Book here"/"Contact us" are the
+   only way to act from the header. Wrap onto a second row instead. */
+@media (max-width: 520px) {
+  .site-header.is-home .container { flex-wrap: wrap; row-gap: 0.75rem; }
+  .site-header.is-home .nav-wrap { width: 100%; margin-left: 0; }
+  .site-header.is-home .header-actions { width: 100%; flex-wrap: wrap; }
+  .site-header.is-home .btn.header-cta {
+    display: inline-flex;
+    white-space: normal;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
 .nav-toggle { display: inline-flex; align-items: center; justify-content: center; order: 3; }
 .primary-nav {
   position: fixed;
@@ -502,7 +515,6 @@ p { color: var(--color-text-soft); max-width: 62ch; }
 }
 .hero h1 { margin-bottom: var(--space-3); }
 .hero-lede { font-size: 1.15rem; margin-bottom: var(--space-4); }
-.hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
 
 .journey {
   position: relative;
@@ -537,6 +549,11 @@ p { color: var(--color-text-soft); max-width: 62ch; }
   margin-bottom: 0.5rem;
 }
 :root[data-theme="dark"] .journey-dot { color: var(--color-accent); }
+.journey-dot--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFF7F5;
+}
 .journey-stop span.label {
   font-size: 0.82rem;
   font-weight: 600;
@@ -801,8 +818,13 @@ section { padding-block: var(--space-5); }
 .faq-item summary .chevron { width: 20px; height: 20px; flex-shrink: 0; transition: transform 200ms var(--ease-out); color: var(--color-primary); }
 :root[data-theme="dark"] .faq-item summary .chevron { color: var(--color-accent); }
 .faq-item[open] summary .chevron { transform: rotate(180deg); }
-.faq-item .faq-answer { overflow: hidden; padding-block: 0.4rem 0.8rem; }
-.faq-item.js-accordion .faq-answer { transition: height 220ms var(--ease-out); }
+.faq-item .faq-answer { display: grid; grid-template-rows: 1fr; }
+.faq-item .faq-answer > p { overflow: hidden; padding-block: 0.4rem 0.8rem; }
+.faq-item.js-accordion .faq-answer {
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms var(--ease-out);
+}
+.faq-item.js-accordion.is-open .faq-answer { grid-template-rows: 1fr; }
 @media (prefers-reduced-motion: reduce) {
   .faq-item.js-accordion .faq-answer { transition: none; }
 }
@@ -1095,9 +1117,15 @@ section { padding-block: var(--space-5); }
     background: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface));
   }
   .tree-mobile-list .stage-title { flex: 1; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--color-text); }
-  .tree-mobile-list .stage-detail { max-height: 0; opacity: 0; overflow: hidden; padding-left: 3.25rem; transition: max-height 0.3s ease, opacity 0.2s ease; }
-  .tree-mobile-list .stage.is-open .stage-detail { max-height: 280px; opacity: 1; }
-  .tree-mobile-list .stage-detail-inner { padding: 0 0.4rem 0.9rem; }
+  .tree-mobile-list .stage-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    padding-left: 3.25rem;
+    transition: grid-template-rows 0.3s ease, opacity 0.2s ease;
+  }
+  .tree-mobile-list .stage.is-open .stage-detail { grid-template-rows: 1fr; opacity: 1; }
+  .tree-mobile-list .stage-detail-inner { overflow: hidden; padding: 0 0.4rem 0.9rem; }
   .tree-mobile-list .stage-detail p { margin: 0; font-size: 0.9rem; }
   .tree-mobile-list .stage-detail ul { margin: 0.5rem 0 0; padding-left: 1rem; font-size: 0.87rem; color: var(--color-text-soft); list-style: disc; }
 }
