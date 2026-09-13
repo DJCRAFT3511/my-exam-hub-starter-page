@@ -27,6 +27,8 @@ MyExamHub is an education website. It launches focused on 11+ exam preparation, 
 
 Built as an extensible foundation from day one rather than a single-purpose exam microsite: the initial static "digital brochure" version must not need to be torn down when later features (accounts, bookings, search) are added.
 
+Confirmed USP: the detailed feedback report given after mock exams/practice papers — not just a score, but specific guidance on where a child should focus next. This is the concrete, differentiating proof point (vs. generic tutoring/prep sites) and should be surfaced prominently rather than buried in page copy.
+
 ## Operating Context
 
 - Version 1 is a static site: no login, no dynamic content, informational/brochure-style.

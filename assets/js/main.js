@@ -85,6 +85,23 @@
     });
   }
 
+  document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var dialog = document.getElementById(btn.getAttribute('data-open-modal'));
+      if (dialog && typeof dialog.showModal === 'function') { dialog.showModal(); }
+    });
+  });
+
+  document.querySelectorAll('.info-modal').forEach(function (dialog) {
+    var closeBtn = dialog.querySelector('.info-modal-close');
+    if (closeBtn) { closeBtn.addEventListener('click', function () { dialog.close(); }); }
+    dialog.addEventListener('click', function (e) {
+      var rect = dialog.getBoundingClientRect();
+      var inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if (!inside) { dialog.close(); }
+    });
+  });
+
   var milestones = document.querySelectorAll('.milestone');
   if (milestones.length && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {

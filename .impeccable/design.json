@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T00:00:00Z",
+  "title": "Design System: MyExamHub",
+  "extensions": {
+    "colorMeta": {
+      "burgundy": { "role": "primary", "displayName": "Deep Burgundy", "canonical": "#7A2438", "tonalRamp": ["#2A0D16", "#451626", "#611F31", "#7A2438", "#9A4459", "#BC7189", "#DDA8B9", "#F5E3E8"] },
+      "mint": { "role": "accent", "displayName": "Fresh Mint", "canonical": "#4FD1B5", "tonalRamp": ["#0A3A32", "#0F7A6C", "#17A38F", "#4FD1B5", "#7EDDC8", "#A8E8D9", "#CFF3E9", "#EDFBF6"] },
+      "teal-deep": { "role": "accent-strong", "displayName": "Deep Teal (contrast-safe accent)", "canonical": "#0F7A6C", "tonalRamp": ["#052420", "#0A4740", "#0F7A6C", "#17A390", "#3DBFA9", "#6FD3C1", "#A6E5D9", "#DAF6EF"] },
+      "dusty-rose": { "role": "secondary", "displayName": "Dusty Rose", "canonical": "#A8536A", "tonalRamp": ["#3D1D26", "#5C2C3A", "#7C3C4F", "#A8536A", "#C07E90", "#D5A7B4", "#E7CDD5", "#F6EBEE"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#2A1F22", "tonalRamp": ["#0F0B0C", "#1A1315", "#2A1F22", "#463639", "#6B5459", "#93767B", "#BFA4A8", "#E9DCDE"] },
+      "cream": { "role": "neutral", "displayName": "Warm Cream", "canonical": "#FFF7F5", "tonalRamp": ["#3D2F2C", "#6B534D", "#A6837A", "#D9BEB5", "#EFDDD7", "#FFF7F5", "#FFFBFA", "#FFFFFF"] },
+      "sage-primary": { "role": "primary (Sage palette)", "displayName": "Plum-Black (Sage palette)", "canonical": "#331623", "tonalRamp": ["#0F070A", "#1D0D14", "#331623", "#54293C", "#7C4560", "#A5708B", "#CBA4B8", "#EBDCE3"] },
+      "sage-accent": { "role": "accent (Sage palette)", "displayName": "Sage Green", "canonical": "#8CA88F", "tonalRamp": ["#1E2A1F", "#334B37", "#4F6F55", "#6D8F72", "#8CA88F", "#AFC3B1", "#D2DED3", "#EEF3EE"] },
+      "sage-secondary": { "role": "secondary (Sage palette)", "displayName": "Muted Gold", "canonical": "#E0B93A", "tonalRamp": ["#4A3B0F", "#755E17", "#A88723", "#D0AC2E", "#E0B93A", "#EACD6E", "#F2E1A5", "#FAF3DA"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page-level h1 headlines only." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2 headings." },
+      "title": { "displayName": "Title", "purpose": "Card and sub-section h3 headings." },
+      "body": { "displayName": "Body", "purpose": "All paragraph copy, 62ch max width." },
+      "label": { "displayName": "Label", "purpose": "Uppercase eyebrows, step numbers, footer column headings, badges." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 1px 2px rgba(42,42,34,0.06), 0 1px 1px rgba(42,31,34,0.04)", "purpose": "Resting elevation for cards, buttons, journey/tree nodes." },
+      { "name": "shadow-md", "value": "0 8px 24px rgba(42,31,34,0.10)", "purpose": "Hover lift for cards/buttons; open state of tree nodes and tooltip cards." },
+      { "name": "shadow-lg", "value": "0 16px 40px rgba(42,31,34,0.16)", "purpose": "Mobile nav drawer and the tree's floating hover tooltip card." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default easing for hover lifts, card transforms, chevron rotation." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Reserved symmetrical easing token." },
+      { "name": "ease-drawer", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Mobile nav drawer slide-in/out." }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "520px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "700px" },
+      { "name": "lg", "value": "760px" },
+      { "name": "xl", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call-to-action button — burgundy fill, cream text, soft lift on hover.",
+      "html": "<button class=\"ds-btn-primary\">Get in touch</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 0.98rem; padding: 0.8rem 1.4rem; border: 2px solid transparent; border-radius: 8px; cursor: pointer; background: #7A2438; color: #FFF7F5; box-shadow: 0 1px 2px rgba(42,31,34,0.06), 0 1px 1px rgba(42,31,34,0.04); transition: transform 160ms cubic-bezier(0.23,1,0.32,1), box-shadow 160ms ease; } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(42,31,34,0.10); } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action button — transparent fill, burgundy border and text.",
+      "html": "<button class=\"ds-btn-outline\">See the Learning Journey</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 0.98rem; padding: 0.8rem 1.4rem; border: 2px solid #7A2438; border-radius: 8px; cursor: pointer; background: transparent; color: #7A2438; transition: transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 150ms ease; } .ds-btn-outline:hover { background: rgba(122,36,56,0.08); transform: translateY(-1px); } .ds-btn-outline:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Content card used for feature grids — flat surface, soft border, lift on hover.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">School Support</h3><p class=\"ds-card-body\">General academic support across year groups, from confidence-building to core skills.</p></div>",
+      "css": ".ds-card { background: #FFFFFF; border: 1px solid rgba(42,31,34,0.12); border-radius: 14px; padding: 2rem; box-shadow: 0 1px 2px rgba(42,31,34,0.06), 0 1px 1px rgba(42,31,34,0.04); transition: box-shadow 200ms ease, transform 200ms cubic-bezier(0.23,1,0.32,1); } .ds-card:hover { box-shadow: 0 8px 24px rgba(42,31,34,0.10); transform: translateY(-2px); } .ds-card-title { font-family: 'Frank Ruhl Libre', Georgia, serif; font-weight: 700; font-size: 1.15rem; color: #7A2438; margin-bottom: 0.5rem; } .ds-card-body { font-family: 'Source Sans 3', sans-serif; font-size: 0.96rem; color: #5C4650; margin: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "field-input",
+      "description": "Form field with a contrast-safe focus ring using the Deep Teal accent.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Your name</span><input class=\"ds-field-input\" type=\"text\" placeholder=\"Jane Parent\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 0.4rem; font-family: 'Source Sans 3', sans-serif; } .ds-field-label { font-weight: 600; font-size: 0.92rem; color: #2A1F22; } .ds-field-input { font: inherit; padding: 0.75rem 0.9rem; border-radius: 8px; border: 1.5px solid rgba(42,31,34,0.12); background: #FFFFFF; color: #2A1F22; } .ds-field-input:focus { outline: 2px solid #0F7A6C; outline-offset: 1px; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Primary nav link, with a filled-pill active state for the current page.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">School Support</a><a class=\"ds-nav-link is-active\" href=\"#\">Exam Preparation</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 0.2rem; font-family: 'Source Sans 3', sans-serif; } .ds-nav-link { display: inline-block; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.55rem 0.85rem; border-radius: 8px; color: #2A1F22; transition: background-color 150ms ease; } .ds-nav-link:hover { background: #FFF7F5; } .ds-nav-link.is-active { color: #7A2438; background: rgba(122,36,56,0.10); }"
+    },
+    {
+      "name": "Journey Node",
+      "kind": "custom",
+      "refersTo": "journey-dot",
+      "description": "Signature circular node used on the home hero path and the About page's growing tree — numbered stop with a soft shadow and accent ring.",
+      "html": "<div class=\"ds-node\">2</div>",
+      "css": ".ds-node { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #FFFFFF; border: 3px solid #4FD1B5; box-shadow: 0 1px 2px rgba(42,31,34,0.06), 0 1px 1px rgba(42,31,34,0.04); font-family: 'Frank Ruhl Libre', Georgia, serif; font-weight: 700; color: #0F7A6C; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease; } .ds-node:hover { transform: scale(1.18) rotate(-4deg); box-shadow: 0 8px 24px rgba(42,31,34,0.10); }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": "badge-soon",
+      "description": "Pill badge marking a future/coming-soon feature note.",
+      "html": "<span class=\"ds-badge\">Coming soon</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Source Sans 3', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #A8536A; background: rgba(79,209,181,0.16); border: 1px solid rgba(79,209,181,0.45); padding: 0.3rem 0.7rem; border-radius: 999px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Growth Journey",
+    "overview": "MyExamHub is a warm, editorial brochure site built around a single throughline: a child's path through school, rendered literally as a drawn path and a growing tree. The home page hero opens on a dashed route connecting four milestones (Year 2–6 → 11+ Prep → Secondary → Beyond); the About page mirrors this with an animated tree that grows a trunk and four branches, each ending in a node the visitor can open for detail. Both devices reveal themselves in place at rest (no-JS and reduced-motion visitors see the complete path/tree immediately) and animate additively for everyone else — the motion is a bonus, never a requirement to understand the page.\n\nThe palette pairs a deep, confident burgundy (serif headings, primary actions — the \"trust\" register a parent evaluating a tutoring product needs) with a fresh mint accent used sparingly as the \"current step\" marker and decorative flourish, plus a dusty-rose secondary reserved for small editorial labels (eyebrows, step numbers). The type pairing does the same double duty: Frank Ruhl Libre serif display type gives headings gravity and a slightly academic, heritage feel without tipping into stuffy; Source Sans 3 carries all body copy and UI chrome in a plain, friendly, highly legible voice. Surfaces stay flat cream/white with soft ambient shadows rather than hard borders or heavy elevation — calm, not corporate, and never primary-colored/cartoonish in the way a \"kids app\" would be.",
+    "keyCharacteristics": [
+      "A literal, recurring path/node/tree motif carries the \"growth\" narrative across pages rather than living only in copy.",
+      "Warm editorial palette (burgundy + mint + dusty-rose on cream) — confident and calm, not a generic SaaS blue-and-white template.",
+      "Serif display type for gravity, plain sans body type for clarity; never mixed within the same text role.",
+      "Flat surfaces, soft ambient shadows, generous rounded corners — nothing skeuomorphic or hard-edged.",
+      "Motion is additive and respectful of prefers-reduced-motion: every animated reveal has a fully-visible base state."
+    ],
+    "rules": [
+      { "name": "The Foreground Substitution Rule", "body": "The raw accent color (Mint) is a decorative fill/border/stroke color, not a text color, in light mode. Anywhere the accent needs to be foreground content (numerals, links, icons, focus rings) on a light surface, substitute Deep Teal instead — never place raw light-mode Mint text on cream/white.", "section": "colors" },
+      { "name": "The Theme-Constant Ink Rule", "body": "Text/icons placed on the accent's own fill (badges, tags) always use a fixed dark ink (#2A1F22), regardless of theme — because the accent fill doesn't change between themes even though the general text color does.", "section": "colors" },
+      { "name": "The Optical Sizing Rule", "body": "Tracking and leading are size-specific, not one fixed value for every heading: larger display type gets more negative tracking and tighter leading; smaller headings get progressively less of both.", "section": "typography" },
+      { "name": "The Ambient-Not-Structural Rule", "body": "Shadows exist to signal \"this is interactive/floating,\" not to fake material thickness — flat sections and body copy never carry a shadow; only cards, buttons, nav chrome, and floating tooltips do, and only ever the soft ambient kind.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Deep Teal, not raw Mint, wherever the accent needs to be legible foreground text/icons/focus rings in light mode.",
+      "Do keep every occurrence of the journey/tree/node motif fully visible in its base (no-animation) state; motion is additive only.",
+      "Do use CSS custom properties for every color/shadow/radius/spacing/easing value — never hardcode a value that already has a token.",
+      "Do keep the circle/node shape exclusive to the journey/tree/icon-button motif so it reads as the signature device.",
+      "Do apply nav/header/footer changes identically across all 6 HTML pages — there is no include system."
+    ],
+    "donts": [
+      "Don't drift toward a generic flat-blue SaaS/startup template look.",
+      "Don't drift toward a bright-primary-color, cartoonish \"kids app\" look.",
+      "Don't hardcode a color inline instead of using a token — one legacy instance exists in index.html's CTA band outline button; it is a known exception, not a pattern to extend.",
+      "Don't use raw Mint as text/icon color on a light surface without the Deep Teal substitution — it fails contrast.",
+      "Don't give the outline/ghost button a heavier treatment than the primary button."
+    ]
+  }
+}
