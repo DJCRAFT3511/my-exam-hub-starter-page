@@ -23,8 +23,7 @@
   var toggle = document.querySelector('.theme-toggle');
   if (toggle) {
     toggle.addEventListener('click', function () {
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
+      var current = root.getAttribute('data-theme') || 'light';
       var next = current === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       localStorage.setItem('myexamhub-theme', next);

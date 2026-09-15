@@ -73,23 +73,6 @@
   color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-primary: #7A2438;
-    --color-accent: #4FD1B5;
-    --color-accent-strong: #4FD1B5;
-    --color-secondary: #A8536A;
-    --color-bg: #240F17;
-    --color-surface: #331623;
-    --color-text: #F5EEEA;
-    --color-text-soft: #D9BFC4;
-    --color-border: rgba(245, 238, 234, 0.14);
-    --color-footer-bg: #170A0F;
-    --color-footer-text: #F5EEEA;
-    color-scheme: dark;
-  }
-}
-
 /* ===== Palette switcher: Burgundy & Sage =====
    Primary/Accent/Secondary don't change between light/dark (same pattern
    as the default Burgundy & Mint palette), so one block covers both
@@ -109,11 +92,6 @@
 }
 :root[data-palette="sage"][data-theme="dark"] {
   --color-accent-strong: #8CA88F;
-}
-@media (prefers-color-scheme: dark) {
-  :root[data-palette="sage"]:not([data-theme="light"]) {
-    --color-accent-strong: #8CA88F;
-  }
 }
 
 /* Reset */
@@ -143,12 +121,6 @@ h1, h2, h3, h4 {
 :root[data-theme="dark"] h2,
 :root[data-theme="dark"] h3,
 :root[data-theme="dark"] h4 { color: var(--color-text); }
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) h1,
-  html:not([data-theme="light"]) h2,
-  html:not([data-theme="light"]) h3,
-  html:not([data-theme="light"]) h4 { color: var(--color-text); }
-}
 
 /* Optical sizing: tracking and leading are size-specific, not one fixed
    value for every heading — large display type wants negative tracking
@@ -261,9 +233,6 @@ p { color: var(--color-text-soft); max-width: 62ch; }
   color: var(--color-text-soft);
 }
 :root[data-theme="dark"] .word-dark { color: var(--color-text); }
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .word-dark { color: var(--color-text); }
-}
 @media (max-width: 640px) {
   .brand { position: static; transform: none; }
   .brand-mark { width: 46px; height: 37px; }
@@ -683,9 +652,6 @@ section { padding-block: var(--space-5); }
   font-size: 0.92rem;
 }
 :root[data-theme="dark"] .testimonial-author { color: var(--color-accent); }
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .testimonial-author { color: var(--color-accent); }
-}
 
 /* ===== Info modal (in-page "Read more" boxes) ===== */
 .info-modal {
