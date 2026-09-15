@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-15T16:59:07.991Z",
+        "reason": "false positive: section-alt gets 52px vertical padding from the global 'section' rule and 32px horizontal from the nested .container — detector didn't resolve padding from the .container child"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-15T16:59:13.196Z",
+        "reason": "false positive: dominant sizes per role are pulled from unrelated contexts (hidden info-modal-box h3, footer-col h5, contact-item micro-labels) that are never visually adjacent to each other, so the flatness metric doesn't reflect a real on-screen hierarchy"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "assets/css/style.css"
+        ],
+        "createdAt": "2026-09-15T17:01:53.608Z",
+        "reason": "only match is .branch transition: stroke-width 0.25s ease (line 969) - SVG stroke-width is a paint-only presentation property, not the CSS box-model width/height/padding/margin the rule targets; no other layout-transition matches in this file"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "about.html"
+        ],
+        "createdAt": "2026-09-15T17:12:50.007Z",
+        "reason": "false positive: section-alt gets 52px vertical padding from the global 'section' rule and 32px horizontal from the nested .container, same as the already-suppressed index.html instance \\u2014 detector doesn't resolve padding from the .container child"
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          "about.html"
+        ],
+        "createdAt": "2026-09-15T17:16:22.352Z",
+        "reason": "user confirmed: The Learning Journey eyebrow is intentional, a consistent short-label page-header convention used across all 5 interior pages, not the generic full-sentence SaaS hero pattern"
+      }
+    ]
+  }
+}
