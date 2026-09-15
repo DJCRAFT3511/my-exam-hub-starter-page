@@ -370,13 +370,14 @@ p { color: var(--color-text-soft); max-width: 62ch; }
    page has no hamburger fallback, so "Book here"/"Contact us" are the
    only way to act from the header. Wrap onto a second row instead. */
 @media (max-width: 520px) {
-  .site-header.is-home .container { flex-wrap: wrap; row-gap: 0.75rem; }
-  .site-header.is-home .nav-wrap { width: 100%; margin-left: 0; }
-  .site-header.is-home .header-actions { width: 100%; flex-wrap: wrap; }
+  .site-header.is-home .container { flex-wrap: wrap; row-gap: 0.75rem; justify-content: center; }
+  .site-header.is-home .brand { align-items: center; text-align: center; }
+  .site-header.is-home .nav-wrap { width: 100%; margin-left: 0; justify-content: center; }
+  .site-header.is-home .header-actions { width: 100%; flex-wrap: wrap; justify-content: center; }
   .site-header.is-home .btn.header-cta {
     display: inline-flex;
     white-space: normal;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     justify-content: center;
   }
 }
