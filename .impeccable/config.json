@@ -47,6 +47,15 @@
         ],
         "createdAt": "2026-09-15T17:16:22.352Z",
         "reason": "user confirmed: The Learning Journey eyebrow is intentional, a consistent short-label page-header convention used across all 5 interior pages, not the generic full-sentence SaaS hero pattern"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "eleven-plus.html"
+        ],
+        "createdAt": "2026-09-15T17:42:54.121Z",
+        "reason": "false positive: section-alt gets 52px vertical padding from the global 'section' rule and 32px horizontal from the nested .container, same confirmed false positive already suppressed on index.html and about.html"
       }
     ]
   }

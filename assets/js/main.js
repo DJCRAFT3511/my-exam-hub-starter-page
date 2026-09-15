@@ -5,27 +5,6 @@
     root.setAttribute('data-theme', stored);
   }
 
-  var storedPalette = localStorage.getItem('myexamhub-palette');
-  if (storedPalette === 'sage') {
-    root.setAttribute('data-palette', 'sage');
-  }
-
-  var paletteToggle = document.querySelector('.palette-toggle');
-  if (paletteToggle) {
-    paletteToggle.addEventListener('click', function () {
-      var isSage = root.getAttribute('data-palette') === 'sage';
-      var next = isSage ? 'mint' : 'sage';
-      if (next === 'sage') {
-        root.setAttribute('data-palette', 'sage');
-      } else {
-        root.removeAttribute('data-palette');
-      }
-      localStorage.setItem('myexamhub-palette', next);
-      paletteToggle.setAttribute('aria-pressed', next === 'sage' ? 'true' : 'false');
-      paletteToggle.setAttribute('aria-label', next === 'sage' ? 'Switch to Mint colours' : 'Switch to Sage colours');
-    });
-  }
-
   var header = document.querySelector('.site-header');
   if (header) {
     var onScroll = function () {

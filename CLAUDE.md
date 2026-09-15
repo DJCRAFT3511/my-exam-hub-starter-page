@@ -28,7 +28,7 @@ There is no templating or include system. The header, nav, and footer markup is 
 
 - Single IIFE, vanilla DOM APIs only — no framework or libraries.
 - Uses `var`, single-quoted strings, 2-space indentation.
-- `localStorage` keys already in use: `myexamhub-theme`, `myexamhub-palette`.
+- `localStorage` keys already in use: `myexamhub-theme`.
 
 ## Local tooling directories (not part of the project)
 
